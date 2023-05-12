@@ -1,3 +1,7 @@
+/* tecnomultimedia
+Alumno: Juan Gabriel Medina      NºLegajo:93530/3
+Profesor: David Bedoian          Comision: 3
+*/
 String estado = "inicio";
 float x;
 PImage img1;
