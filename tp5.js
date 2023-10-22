@@ -1,6 +1,6 @@
 /*Alumno:Juan Gabriel Medina   Legajo:93530/3    Comision: 3     docente:David Bedoian  Materia: Tecnologia Multimedia 1
-Tp 5: Minijuego basado en la aventura grafica con porgramacion orientada a objetos
-Enlace al video explicativo: https://www.youtube.com/watch?
+Tp 5: Minijuego basado en la aventura grafica con programacion orientada a objetos
+Enlace al video explicativo: https://youtu.be/3sXC7H6iO7Q
 */
 let objJuego;
 
