@@ -1,8 +1,8 @@
 class Enemigo {
   constructor(posX, posY) {
-    this.x = posX; // Asigna posX a this.x
-    this.y = posY; // Asigna posY a this.y
-    this.velocidad = random(0,5, 3);
+    this.x = posX;
+    this.y = posY;
+    this.velocidad = random(0,4);
     this.cargaEnemigo();
   }
   cargaEnemigo() {
@@ -37,5 +37,6 @@ class Enemigo {
  loGolpeoRata(posX, posY) {
    this.posX = random(20, 550); // Posición X aleatoria
    this.posY = random(-300, -10); // Posición arriba de la pantalla
+   this.velocidad = random(0,5);
 }
 }
