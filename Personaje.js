@@ -2,7 +2,8 @@ class Personaje {
   constructor(posX, posY) {
     this.posX = posX;
     this.posY = 320;
-    this.vida = 3;
+    this.vidaInicial = 3; // Cantidad inicial de vidas
+    this.vida = this.vidaInicial; // Inicializar las vidas
     this.personajeSprites = []; // Array para almacenar las imágenes del personaje
     this.animationFrames = [0]; // Índices de las imágenes para animación de caminar
     this.currentFrame = 0;
@@ -12,7 +13,11 @@ class Personaje {
     this.velY = 20;  
     this.cargaPersonaje();
   }  
-
+  
+ iniciarNuevoJuego() {
+    this.vida = this.vidaInicial; 
+ }
+ 
  colisionRecolectable(recolectable) {
     // Colisión con un recolectable
     if (
@@ -124,7 +129,8 @@ cargaPersonaje(){
   }
 
 loGolpeoRata(enemigo) {
-  // Cambiar la posición del enemigo cuando el personaje lo golpea
+  this.vida--;
+  // Cambia la posición del enemigo cuando cae sobre el personaje
   enemigo.x = random(20, 550); // Nueva posición X aleatoria para el enemigo
   enemigo.y = random(-300, -10); // Nueva posición arriba de la pantalla para el enemigo
 }
