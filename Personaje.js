@@ -9,14 +9,9 @@ class Personaje {
     this.frameDelay = 15; // Cantidad de fotogramas entre cambios de imagen;
     this.animationIndex = 0; // Índice actual de la animación
     this.velX = 20;
-    this.velY = 20;
-   this.puntaje = 0; // Agrega una variable para el puntaje  
+    this.velY = 20;  
     this.cargaPersonaje();
   }  
-  
-  sumarPuntos(puntos) {
-  this.puntos += puntos;
-}
 
  colisionRecolectable(recolectable) {
     // Colisión con un recolectable
