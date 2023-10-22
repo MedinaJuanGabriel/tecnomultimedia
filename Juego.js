@@ -3,6 +3,7 @@ class Juego{
     this.cantidadEnemigos = 3;
     this.cantidadRecolectables = 1;
     this.crearEnemigos();
+    this.vidaInicial = 3; // Inicializa la variable vidaInicial
     this.crearPersonaje();
     this.crearRecolectables();
     this.carga();
@@ -15,7 +16,7 @@ class Juego{
    carga(){
    this.fondoBosque = loadImage('assets/fondoBosque.png');
     this.decoPasto = loadImage('assets/decoPasto.png');
-     this.instrucciones = loadImage('assets/inst.png');
+     this.instrucciones = loadImage('assets/inst.svg');
      this.perder = loadImage('assets/pantallaperder.png');
      this.ganar = loadImage('assets/pantallaganar.png');
    }
@@ -38,16 +39,17 @@ class Juego{
     }
   
 
-    for (let i = 0; i < this.cantidadEnemigos; i++) {
+ for (let i = 0; i < this.cantidadEnemigos; i++) {
       if (this.enemigos[i].colisionPersonaje(this.personaje)) {
-        this.personaje.loGolpeoRata(this.enemigos[i]); // Pasar el objeto de enemigo
+        this.personaje.loGolpeoRata(this.enemigos[i]);
+        if (this.personaje.vida <= 0) {
+          this.estado = "perder"; // Cambia al estado perder si el jugador se queda sin vidas
+        }
       }
     }
-    
-     if (this.puntos >= 26) {
-      this.estado = "ganar"; // Cambia al estado "ganar"
+    if (this.puntos >= 26) {
+      this.estado = "ganar";
     }
-    
   }
 }
 
@@ -84,11 +86,12 @@ class Juego{
   
   }
      }
- /*    
-  iniciar(){
-  
-  }
-*/  
+   
+ iniciar() {
+  this.personaje.iniciarNuevoJuego(); // Restablece las vidas del personaje
+  this.estado = "jugando"; //
+}
+ 
   crearEnemigos() {
     this.enemigos = [];
     for (let i = 0; i < this.cantidadEnemigos; i++) {
@@ -108,24 +111,25 @@ class Juego{
    this.personaje = new Personaje(width/2,380);
   }
   
-  teclaPresionada(keyCode) {
+teclaPresionada(keyCode) {
     if (this.estado === "perder" || this.estado === "ganar") {
       if (keyCode === ENTER) {
         if (this.estado === "perder") {
-          this.estado = "instrucciones";
+          this.iniciarNuevoJuego(); 
         } else if (this.estado === "ganar") {
-          this.iniciarNuevoJuego(); // Agrega esta función para reiniciar el juego
+          this.iniciarNuevoJuego(); //función para reiniciar el juego
         }
       }
     }
     this.personaje.teclaPresionada(keyCode);
   }
 
-  iniciarNuevoJuego() {
-    this.crearEnemigos();
-    this.crearPersonaje();
-    this.crearRecolectables();
-    this.puntos = 0;
-    this.estado = "instrucciones";
-  }
+ iniciarNuevoJuego() {
+  this.estado = "instrucciones";
+  this.personaje.vida = this.vidaInicial; 
+  this.crearEnemigos();
+  this.crearRecolectables();
+  this.puntos = 0;
+  this.hud.mostrar(this.vidaInicial, this.puntos);
+}
 }
