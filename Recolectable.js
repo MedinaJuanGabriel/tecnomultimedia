@@ -18,7 +18,6 @@ class Recolectable {
  moverNotas() {
   this.posY += this.velocidad;
   if (this.posY > height) {
-    // Si el recolectable está fuera de la pantalla, elimínalo y crea uno nuevo.
     this.posX = random(20,550);
     this.posY = random(-300, -10); // Reposiciona el recolectable arriba de la pantalla.
   } 
@@ -32,23 +31,14 @@ class Recolectable {
       this.posY < personaje.posY + 180
     ) {
       // Colisión con el personaje
-      this.recolectoNota(); // Lógica para recolectar una nota (puedes aumentar el puntaje aquí)
+      this.recolectoNota(); // Lógica para recolectar una nota
       return true; // Devuelve true si colisiona con el personaje.
     }
     return false;
   }
 
 recolectoNota() {
-  // Incrementar el puntaje en 2 puntos
-  this.puntaje += 2;
-  // Además, restablecer la posición del recolectable
   this.posX = random(20, 550);
   this.posY = random(-300, -10);
-}
-      
-
-  subirPuntaje() {
-    // Lógica para aumentar el puntaje
-  }
-
+ }
 }
