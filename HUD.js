@@ -8,12 +8,13 @@ class HUD {
     this.cargaHUD();
   }
 cargaHUD(){
+    this.letraMedieval = loadFont('assets/hamellin.ttf'); // fuente para el texto del puntaje
     this.corazonLleno = loadImage('assets/corazonlleno.png'); // Imagen del corazón lleno
     this.corazonVacio = loadImage('assets/corazonvacio.png'); // Imagen del corazón vacío
-    this.flautaDecoracion = loadImage('assets/puntos.png');
+    this.flautaDecoracion = loadImage('assets/flauta.png'); //flauta decorativa debajo del puntajr
 }
 mostrar(vidas, puntosGenerales) {
-  for (let i = 0; i < 3; i++) {
+   for (let i = 0; i < 3; i++) {
     if (i < vidas) {
       image(this.corazonLleno, i * 50, 10, 40, 40);
     } else {
@@ -23,10 +24,10 @@ mostrar(vidas, puntosGenerales) {
 
   // Dibuja la imagen de la flauta decorativa
   image(this.flautaDecoracion, this.xflauta, this.yflauta, 100, 25);
-
+  textFont(this.letraMedieval);
   // Dibuja el contador de puntos en la imagen de la flauta
   fill(255, 255, 0);
   textSize(24);
-  text("Puntos: " + puntosGenerales, this.xflauta - 5, this.yflauta + 1);
+  text("Puntos: " + puntosGenerales, this.xflauta +10, this.yflauta + 1);
 }
 }
