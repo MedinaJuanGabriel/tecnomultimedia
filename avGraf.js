@@ -1,16 +1,22 @@
 class AventuraGrafica {
   constructor() {
+    //declaracion de estados:
     this.estado = 0;
+    //declaracion de clase juego:
     this.Juego = new Juego(this);
+    //declaracion de clase pantalla
     this.pantalla = new Pantalla(this);
+    //cantidad de pantallas:
     this.cantPantallas = 27;
+    //declaracion de array de fondos:
     this.fondos = [];
 
+    //ciclo for para acceder a imagenes por cantidad de pantallas
     for (let i = 0; i < this.cantPantallas; i++) {
       this.fondos[i] = loadImage(`./assets/fondo_${nf(i, 2)}.png`);
     }
 
-    //los textos:
+    //textos por pantalla:
    this.textos = [
    "Inicio",
   "HABIA UNA VEZ,digo,Vives en un pueblo hermoso llamado Hamellin de zonas montañosas por las que fluye el rio Weser,eres el lider del gremio granjero.",
@@ -35,37 +41,40 @@ class AventuraGrafica {
   "FINAL DE FABULA: El pueblo vive en tristeza por la perdida y ausencia de los niños, nunca encuentran dónde están ellos ni el flautista como para pagarle para que los devuelva. Aprenden a no repetir sus errores y desde ese momento dejan de ser avariciosos y desagradecidos.",
   ""
     ];  
-    
-    this.botones = [];
   }
- 
- 
-
+//Metodo dibujar
   dibujar() {
+    //declarando el metodo en la clase pantalla con parametros
     this.pantalla.dibujar( this.fondos[ this.estado ] , this.textos[ this.estado ] );
   }
+  //Metodo actualizar
  actualizar(){
+   //declarando el metodo en la clase Juego
   this.Juego.actualizar();
  
  }
+ //Metodo dibujarjuego
  dibujarjuego(){
+   //Declarando el metodo en la clase juego
  this.Juego.dibujarjuego();
  }
- 
+ //Metodo cambiarestadoperder
  cambiarEstadoPerder() {
-  /* this.juegoIniciado = true;*/
+ //Cambio de estado
     this.pantalla.ag.estado = 0; // Cambia al estado inicial en la aventura gráfica
    
   }
-
+ //Metodo cambiarestadoganar
   cambiarEstadoGanar() {
+  //Cambio de estado
     this.pantalla.ag.estado = 14; // Cambia al estado de ganar en la aventura gráfica
     
   }
   
  
- 
+ //Metodo teclapresionada
  teclaPresionada(keyCode){
+   //Declarando el metodo en la clase juego
    this.Juego.teclaPresionada(keyCode);
  }
 }
