@@ -10,7 +10,6 @@ class Juego{
     this.carga();
     this.puntos = 0;
     this.hud = new HUD();
-    /* this.juegoIniciado = false;*/
     this.personajeSprites = []; // Array para almacenar las imágenes del personaje
   
     
@@ -81,16 +80,7 @@ class Juego{
     }
   
   } 
-/* else if (!this.juegoIniciado) {
-      // Mostrar las imágenes de perder y ganar antes de iniciar el juego
-      // Puedes ajustar esto según tus necesidades específicas
-      image(this.pantalla.ag.Juego.perder, 0, 0, width, height);
-      image(this.pantalla.ag.Juego.ganar, 0, 0, width, height);
-      return;
-    }*/
 
- 
- 
   crearEnemigos() {
     this.enemigos = [];
     for (let i = 0; i < this.cantidadEnemigos; i++) {
@@ -110,14 +100,18 @@ class Juego{
    this.personaje = new Personaje(width/2,380);
   }
   
+  
+  //Metodo teclapresionada
 teclaPresionada(keyCode) {
     if (this.estado === "perder" || this.estado === "ganar") {
       if (keyCode === ENTER)
       {
         if (this.estado === "perder") {
+          //llama al metodo de la aventura grafica que te devuelve a un estado de la clase pantalla:
           this.ag.cambiarEstadoPerder();
          this.mostrarFinales = false;
         } else if (this.estado === "ganar") {
+          //llama al metodo de la aventura grafica que te devuelve a un estado de la clase pantalla:
          this.ag.cambiarEstadoGanar(); 
        
            this.mostrarFinales = false;
@@ -130,7 +124,7 @@ teclaPresionada(keyCode) {
   
  
 
- 
+ //Metodo que reinicia el juego:
   iniciarNuevoJuego() {
      this.mostrarFinales = true;
       this.estado = "jugando";
@@ -139,6 +133,5 @@ teclaPresionada(keyCode) {
       this.crearRecolectables();
       this.puntos = 0;
       this.hud.mostrar(this.vidaInicial, this.puntos);
-    }
-   
+    }  
 }
