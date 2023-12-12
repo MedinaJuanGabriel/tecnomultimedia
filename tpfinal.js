@@ -1,3 +1,6 @@
+/*Alumno:Juan Gabriel Medina   Legajo:93530/3    Comision: 3     docente:David Bedoian  Materia: Tecnologia Multimedia 1
+Tp final: Aventura grafica con minijuego integrado
+*/
 //Declaracion inicial de la aventura grafica
 let ag;
 
